@@ -16,10 +16,7 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 fruit_options = list(my_fruit_list.index)
 default_fruits = ['Avocado', 'strawberries']
 
-print("Available options:", fruit_options)
-print("Default fruits:", default_fruits)
-
-selected_fruits = streamlit.multiselect("Pick some fruits:", fruit_options, default_fruits)
+selected_fruits = [fruit for fruit in default_fruits if fruit in fruit_options]
 fruits_to_show = my_fruit_list.loc[selected_fruits]
 
 streamlit.dataframe(my_fruit_list)
