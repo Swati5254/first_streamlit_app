@@ -18,6 +18,14 @@ default_fruits = ['Avocado', 'strawberries']
 
 print("Available options:", fruit_options)
 print("Default fruits:", default_fruits)
+print("Data type of options:", type(fruit_options[0]))
+print("Data type of default fruits:", type(default_fruits[0]))
+
+selected_fruits = streamlit.multiselect("Pick some fruits:", fruit_options, default_fruits)
+fruits_to_show = my_fruit_list.loc[selected_fruits]
+
+streamlit.dataframe(my_fruit_list)
+streamlit.dataframe(fruits_to_show)
 
 selected_fruits = streamlit.multiselect("Pick some fruits:", fruit_options, default_fruits)
 fruits_to_show = my_fruit_list.loc[selected_fruits]
