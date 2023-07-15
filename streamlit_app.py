@@ -14,15 +14,11 @@ my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/da
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
 fruit_options = list(my_fruit_list.index)
-default_fruits = ['Avocado', 'strawberries']
-
-print("Available options:", fruit_options)
-print("Default fruits:", default_fruits)
-print("Data type of options:", type(fruit_options[0]))
-print("Data type of default fruits:", type(default_fruits[0]))
+default_fruits = [str(fruit) for fruit in ['Avocado', 'strawberries']]
 
 selected_fruits = streamlit.multiselect("Pick some fruits:", fruit_options, default_fruits)
 fruits_to_show = my_fruit_list.loc[selected_fruits]
 
 streamlit.dataframe(my_fruit_list)
 streamlit.dataframe(fruits_to_show)
+
